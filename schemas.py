@@ -4,9 +4,10 @@ class TaskBase(BaseModel):
     title: str
     completed: bool = False
 
-class TaskCreate(TaskBase):
-    pass
-
+class TaskCreate(BaseModel):
+    title: str
+    description: str
+    
 class TaskUpdate(BaseModel):
     title: str | None = None
     completed: bool | None = None

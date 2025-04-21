@@ -5,9 +5,6 @@ import models
 import schemas
 import database
 
-# Create all tables
-models.Base.metadata.create_all(bind=database.engine)
-
 # Initialize app
 app = FastAPI()
 
@@ -19,6 +16,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Create all tables
+models.Base.metadata.create_all(bind=database.engine)
 
 # Dependency to get a DB session
 def get_db():
