@@ -5,6 +5,9 @@ import models
 import schemas
 import database
 
+# Create all tables
+models.Base.metadata.create_all(bind=database.engine)
+
 # Initialize app
 app = FastAPI()
 
@@ -17,8 +20,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Create all tables
-models.Base.metadata.create_all(bind=database.engine)
+
 
 # Dependency to get a DB session
 def get_db():
@@ -49,7 +51,9 @@ def update_task(task_id: int, task_update: schemas.TaskUpdate, db: Session = Dep
     if not task:
         raise HTTPException(status_code=404, detail="Task not found")
 
-    for key, value in task_update.dict().items():
+    # Use exclude_unset to skip None values
+    update_data = task_update.dict(exclude_unset=True)
+    for key, value in update_data.items():
         setattr(task, key, value)
 
     db.commit()
