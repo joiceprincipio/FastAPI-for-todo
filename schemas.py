@@ -2,7 +2,7 @@ from pydantic import BaseModel
 
 class TaskBase(BaseModel):
     title: str
-    completed: bool
+    completed: bool = False
 
 class TaskCreate(TaskBase):
     pass
