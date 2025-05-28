@@ -1,4 +1,4 @@
-live link for the Deployed Frontend7 =  https://joiceprincipio.github.io/PIT-4/
+live link for the Deployed Frontend =  https://joiceprincipio.github.io/PIT-4/
 live link for the Deployed FastAPI Backend = https://fastapi-for-todo.onrender.com/docs
 
 ENDPOINTS
